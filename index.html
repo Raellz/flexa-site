@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flexa | Engenharia do Produto UFLA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rosa:#FFD3E5; --lilas:#E3D8FF; --azul:#D2EAFF; --menta:#D3F3E1; --amarelo:#FFF1BF; --pessego:#FFDFCB;
+  --bg:#FFF9FC; --card:#FFFFFF; --texto:#3A2B49; --suave:#6E5E7E; --linha:#EFE3F1; --destaque:#C2528F;
+  --arco:linear-gradient(90deg,#FFB8D4,#FFD3B5,#FFF1A8,#C6F0D2,#BFE0FF,#D9C9FF);
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#241B2E; --card:#2F2439; --texto:#F6ECFA; --suave:#C9B8D6; --linha:#44344F; --destaque:#FFB3D6;
+    --rosa:#5A3550; --lilas:#463A66; --azul:#33506B; --menta:#32594A; --amarelo:#5E5530; --pessego:#5F4333;}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;font-family:Nunito,system-ui,sans-serif;background:var(--bg);color:var(--texto);line-height:1.65;font-size:17px}
+h1,h2,h3{font-family:Fredoka,Nunito,sans-serif;font-weight:600;line-height:1.2;margin:0}
+a{color:var(--destaque)}
+.stripe{height:10px;background:var(--arco)}
+nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--linha)}
+nav ul{list-style:none;margin:0 auto;padding:10px 16px;display:flex;gap:8px;max-width:1040px;overflow-x:auto}
+nav a{display:block;white-space:nowrap;text-decoration:none;color:var(--texto);padding:6px 14px;border-radius:99px;font-weight:700;font-size:15px}
+nav li:nth-child(6n+1) a{background:var(--rosa)}nav li:nth-child(6n+2) a{background:var(--pessego)}nav li:nth-child(6n+3) a{background:var(--amarelo)}
+nav li:nth-child(6n+4) a{background:var(--menta)}nav li:nth-child(6n+5) a{background:var(--azul)}nav li:nth-child(6n) a{background:var(--lilas)}
+nav a:hover,nav a:focus-visible{outline:2px solid var(--destaque);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.hero{padding:64px 0 48px;text-align:center}
+.logo{display:flex;justify-content:center;gap:10px;margin-bottom:22px}
+.logo span{font-family:Fredoka,sans-serif;font-weight:600;font-size:clamp(40px,9vw,76px);width:1.35em;height:1.35em;display:grid;place-items:center;border-radius:28%;color:#3A2B49}
+.logo span:nth-child(1){background:#FFC2DA;transform:rotate(-4deg)}.logo span:nth-child(2){background:#FFD9BF;transform:rotate(3deg)}
+.logo span:nth-child(3){background:#FFEFA8;transform:rotate(-2deg)}.logo span:nth-child(4){background:#C6F0D2;transform:rotate(4deg)}
+.logo span:nth-child(5){background:#CBE4FF;transform:rotate(-3deg)}
+.hero p{max-width:620px;margin:0 auto 10px;color:var(--suave)}
+.hero .meta{font-size:15px}
+section{padding:56px 0;border-top:1px solid var(--linha)}
+section:nth-of-type(even){background:color-mix(in srgb,var(--lilas) 22%,var(--bg))}
+h2{font-size:clamp(26px,4vw,36px);margin-bottom:8px}
+.lead{color:var(--suave);max-width:680px;margin:0 0 28px}
+h3{font-size:21px;margin:30px 0 12px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.card{background:var(--card);border:1px solid var(--linha);border-radius:20px;padding:20px}
+.card h4{margin:0 0 4px;font-size:18px;font-family:Fredoka,sans-serif;font-weight:500}
+.card p{margin:0;color:var(--suave);font-size:15px}
+.card.t1{border-top:8px solid #FFC2DA}.card.t2{border-top:8px solid #FFD9BF}.card.t3{border-top:8px solid #FFEFA8}
+.card.t4{border-top:8px solid #C6F0D2}.card.t5{border-top:8px solid #CBE4FF}.card.t6{border-top:8px solid #D9C9FF}
+.pessoa .foto{width:72px;height:72px;border-radius:50%;margin-bottom:12px;display:grid;place-items:center;font-family:Fredoka,sans-serif;font-size:28px;color:#3A2B49}
+details{background:var(--card);border:1px solid var(--linha);border-radius:16px;margin:10px 0;padding:0 18px}
+summary{cursor:pointer;padding:14px 0;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:Fredoka,sans-serif;font-size:22px;color:var(--destaque);line-height:1}
+details[open] summary::after{content:"–"}
+summary:focus-visible{outline:2px solid var(--destaque);outline-offset:2px;border-radius:8px}
+details>div{padding:0 0 18px}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:520px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--linha);vertical-align:top}
+th{background:var(--rosa);font-weight:700}
+.bar{display:grid;grid-template-columns:130px 1fr 52px;align-items:center;gap:10px;margin:7px 0;font-size:15px}
+.bar i{display:block;height:16px;border-radius:99px;background:var(--arco)}
+.bar b{text-align:right}
+.tag{display:inline-block;padding:2px 10px;border-radius:99px;font-size:13px;font-weight:700;background:var(--amarelo)}
+.soon{border:2px dashed var(--linha);border-radius:20px;padding:28px;text-align:center;color:var(--suave);background:var(--card)}
+.files{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.files a{background:var(--azul);color:var(--texto);padding:6px 14px;border-radius:99px;font-size:14px;font-weight:700;text-decoration:none}
+.files a:hover,.files a:focus-visible{outline:2px solid var(--destaque)}
+footer{padding:36px 20px;text-align:center;color:var(--suave);font-size:14px}
+@media(max-width:560px){.bar{grid-template-columns:96px 1fr 46px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="stripe"></div>
+<nav aria-label="Menu principal"><ul>
+<li><a href="#inicio">Início</a></li><li><a href="#equipe">Equipe</a></li><li><a href="#pre">Pré-Desenvolvimento</a></li>
+<li><a href="#desenvolvimento">Desenvolvimento</a></li><li><a href="#gate1">Gate 1</a></li><li><a href="#gate2">Gate 2</a></li><li><a href="#pos">Pós-Desenvolvimento</a></li>
+</ul></nav>
+
+<header class="hero wrap" id="inicio">
+  <div class="logo" aria-label="Flexa"><span>F</span><span>L</span><span>E</span><span>X</span><span>A</span></div>
+  <h1 style="font-size:clamp(22px,4vw,30px)">Nosso percurso na disciplina de Engenharia do Produto</h1>
+  <p>Aqui reunimos tudo o que a equipe Flexa desenvolveu, etapa por etapa: do planejamento aos gates, com os documentos e as análises de cada fase.</p>
+  <p class="meta">UFLA, campus São Sebastião do Paraíso · Turma 39A · Profa. Isabela Neto Piccirillo</p>
+</header>
+
+<section id="equipe"><div class="wrap">
+  <h2>Equipe</h2>
+  <p class="lead">Três estudantes de engenharia que desenvolvem o projeto da disciplina juntas e juntos.</p>
+  <div class="grid">
+    <div class="card pessoa t1"><div class="foto" style="background:#FFC2DA">C</div><h4>Cícera Lorrayne</h4><p>Discente</p></div>
+    <div class="card pessoa t4"><div class="foto" style="background:#C6F0D2">R</div><h4>Rafael Bento</h4><p>Discente</p></div>
+    <div class="card pessoa t5"><div class="foto" style="background:#CBE4FF">T</div><h4>Thaís Lopes</h4><p>Discente</p></div>
+  </div>
+  <p class="lead" style="margin-top:24px">Docente da disciplina: Profa. Isabela Neto Piccirillo.</p>
+  <p class="soon">Foto da equipe: adicione em <code>img/equipe.jpg</code> e troque este aviso por uma tag <code>&lt;img&gt;</code>.</p>
+</div></section>
+
+<section id="pre"><div class="wrap">
+  <h2>Pré-Desenvolvimento</h2>
+  <p class="lead">Onde decidimos o que fazer e como organizar o trabalho antes de projetar.</p>
+  <div class="grid">
+    <div class="card t1"><h4>Planejamento estratégico</h4><p>Em breve: missão, visão e objetivos da equipe.</p></div>
+    <div class="card t5"><h4>Planejamento do projeto (TAP)</h4><p>Em breve: Termo de Abertura do Projeto.</p></div>
+  </div>
+  <h3>Critérios de qualidade</h3>
+  <details><summary>Como a Flexa define qualidade</summary><div>
+    <p>Qualidade é responder com precisão técnica às necessidades reais de quem vai usar o produto, com custo viável, e comunicar esse valor com clareza. Nossos critérios se apoiam em três pilares:</p>
+    <div class="grid">
+      <div class="card t3"><h4>Valor e escopo</h4><p>Adequação às necessidades, funcionalidade e multifuncionalidade.</p></div>
+      <div class="card t4"><h4>Processo e engenharia</h4><p>Especificação, viabilidade nas impressoras da UFLA e custo do processo.</p></div>
+      <div class="card t6"><h4>Comunicação e entrega</h4><p>Relatório, apresentação e marketing do produto.</p></div>
+    </div>
+  </div></details>
+</div></section>
+
+<section id="desenvolvimento"><div class="wrap">
+  <h2>Desenvolvimento <span class="tag">Informacional</span></h2>
+  <p class="lead">Nesta fase entendemos quem é afetado pelo produto, o que essas pessoas precisam e transformamos isso em requisitos e metas.</p>
+
+  <details open><summary>Stakeholders</summary><div>
+    <p>Mapeamos quem é afetado pelo projeto e o grau de impacto de cada grupo.</p>
+    <div class="tbl"><table><tr><th>Grupo</th><th>Quem</th><th>Impacto</th></tr>
+    <tr><td>Internos</td><td>Equipe e Profa. Isabela</td><td>Alto</td></tr>
+    <tr><td>Usuária</td><td>Criança que usa o produto no dia a dia</td><td>Crítico</td></tr>
+    <tr><td>Família e cuidado</td><td>Pais, professora de apoio, profissionais da saúde</td><td>Alto</td></tr>
+    <tr><td>Instituições</td><td>Escola (APAE) e UFLA</td><td>Alto / Médio</td></tr>
+    <tr><td>Convivência e limpeza</td><td>Comunidade escolar, equipe de limpeza e manutenção</td><td>Médio</td></tr></table></div>
+  </div></details>
+
+  <details><summary>Questionários</summary><div>
+    <p>Aplicamos questionários com a família e com a terapeuta. Usamos IA para melhorar as perguntas e escolhemos as mais úteis.</p>
+    <div class="grid">
+      <div class="card t1"><h4>Família</h4><p>Perguntas sobre autonomia, inclusão, brincadeiras e momentos em que a cadeira atual não se adapta.</p></div>
+      <div class="card t5"><h4>Terapeuta</h4><p>Perguntas sobre sustentação do tronco, pontos de pressão, inclinação do encosto e materiais.</p></div>
+    </div>
+    <div class="files"><a href="arquivos/questionario-simone.docx">Questionário da família</a><a href="arquivos/questionario-viviane.docx">Questionário da terapeuta</a></div>
+  </div></details>
+
+  <details><summary>Requisitos do cliente e do produto</summary><div>
+    <div class="tbl"><table><tr><th>Requisito do cliente</th><th>Elementos</th><th>Requisito do produto</th></tr>
+    <tr><td>Segurança</td><td>Cinto de contenção e trava das rodas</td><td>Cinto em H e travas de fácil acionamento</td></tr>
+    <tr><td>Estabilidade</td><td>Base de apoio e estrutura principal</td><td>Largura da base e firmeza do chassi</td></tr>
+    <tr><td>Conforto</td><td>Espuma de estofamento</td><td>Espessura do acolchoado e maciez</td></tr>
+    <tr><td>Regulagem</td><td>Ajuste e travas telescópicas</td><td>Níveis de altura e inclinação do encosto</td></tr>
+    <tr><td>Adaptação</td><td>Encaixes e módulos</td><td>Rapidez para mudar o modo de uso</td></tr>
+    <tr><td>Locomoção</td><td>Rodas e rodízios</td><td>Tamanho das rodas e facilidade de girar</td></tr>
+    <tr><td>Apoios</td><td>Suportes laterais e de cabeça</td><td>Suportes de tronco e cabeça</td></tr>
+    <tr><td>Higienização</td><td>Material do assento e estrutura 3D</td><td>Resistência a água, sabão e álcool</td></tr>
+    <tr><td>Instalação</td><td>Presilhas e conectores rápidos</td><td>Poucos passos para sentar e prender</td></tr>
+    <tr><td>Transporte</td><td>Estrutura dobrável e tubos</td><td>Peso leve e fácil de guardar</td></tr></table></div>
+    <div class="files"><a href="arquivos/requisitos-cliente-produto.xlsx">Planilha de requisitos</a><a href="arquivos/lista-requisitos-cliente.docx">Lista de requisitos</a></div>
+  </div></details>
+
+  <details><summary>Matriz de Mudge: o que mais importa para o cliente</summary><div>
+    <p>Comparamos os requisitos dois a dois para descobrir a prioridade de cada um.</p>
+    <div class="bar"><span>Segurança</span><i style="width:100%"></i><b>17,7%</b></div>
+    <div class="bar"><span>Estabilidade</span><i style="width:90%"></i><b>16,0%</b></div>
+    <div class="bar"><span>Conforto</span><i style="width:80%"></i><b>14,2%</b></div>
+    <div class="bar"><span>Regulagem</span><i style="width:70%"></i><b>12,4%</b></div>
+    <div class="bar"><span>Adaptação</span><i style="width:60%"></i><b>10,6%</b></div>
+    <div class="bar"><span>Locomoção</span><i style="width:50%"></i><b>8,9%</b></div>
+    <div class="bar"><span>Apoios</span><i style="width:40%"></i><b>7,1%</b></div>
+    <div class="bar"><span>Higienização</span><i style="width:30%"></i><b>5,3%</b></div>
+    <div class="bar"><span>Instalação</span><i style="width:20%"></i><b>3,5%</b></div>
+    <div class="bar"><span>Transporte</span><i style="width:14%"></i><b>2,5%</b></div>
+    <div class="bar"><span>Leveza</span><i style="width:8%"></i><b>1,4%</b></div>
+    <div class="bar"><span>Cor</span><i style="width:3%"></i><b>0,4%</b></div>
+    <div class="files"><a href="arquivos/matriz-de-mudge.xlsx">Matriz de Mudge completa</a></div>
+  </div></details>
+
+  <details><summary>QFD: metas e especificações do produto</summary><div>
+    <p>Cruzamos os requisitos do cliente com os do produto e comparamos com uma cadeira padrão (benchmarking). Estas são as metas que resultaram:</p>
+    <div class="tbl"><table><tr><th>Requisito do produto</th><th>Meta</th></tr>
+    <tr><td>Presença de cinto</td><td>Cinto tipo H de 5 pontos com fecho postural</td></tr>
+    <tr><td>Travas de fácil acionamento</td><td>Manopla ou pedal de travamento rápido, sem ferramentas</td></tr>
+    <tr><td>Largura da base e chassi</td><td>Chassi reforçado com base de 550 mm</td></tr>
+    <tr><td>Maciez do assento</td><td>Espuma injetada, densidade D28 a D33</td></tr>
+    <tr><td>Espessura do acolchoado</td><td>30 mm</td></tr>
+    <tr><td>Níveis de altura</td><td>5 níveis de regulagem</td></tr>
+    <tr><td>Inclinação do encosto</td><td>Reclinação de 90° a 135°</td></tr>
+    <tr><td>Rodas</td><td>Rodízios duplos macios de 5 polegadas</td></tr>
+    <tr><td>Fácil de guardar</td><td>Mecanismo dobrável de volume reduzido</td></tr>
+    <tr><td>Suportes de tronco e cabeça</td><td>Almofadas laterais modulares e apoio de cabeça</td></tr>
+    <tr><td>Fácil de limpar</td><td>Capa impermeável e lavável</td></tr>
+    <tr><td>Sentar e prender a criança</td><td>Engate rápido com abertura frontal completa</td></tr>
+    <tr><td>Ser leve</td><td>Estrutura modular em tubos de alumínio e conectores 3D</td></tr></table></div>
+    <div class="files"><a href="arquivos/qfd.xlsx">Planilha do QFD</a></div>
+  </div></details>
+
+  <details><summary>FMEA: o que pode falhar e como evitar</summary><div>
+    <p>Quanto maior o NPR (gravidade × ocorrência × detecção), maior a prioridade de ação.</p>
+    <div class="tbl"><table><tr><th>Componente</th><th>Modo de falha</th><th>NPR</th></tr>
+    <tr><td>Conectores impressos em 3D</td><td>Fratura ou separação por fadiga</td><td>60</td></tr>
+    <tr><td>Cinto postural de 5 pontos</td><td>Desengate da fivela ou ruptura da costura</td><td>30</td></tr>
+    <tr><td>Apoio de pés removível</td><td>Regulagem desliza ou plataforma quebra</td><td>27</td></tr>
+    <tr><td>Pistão de elevação</td><td>Perda de pressão do gás</td><td>16</td></tr>
+    <tr><td>Rodas e freio</td><td>Freio desliza</td><td>16</td></tr>
+    <tr><td>Mesinha removível</td><td>Desencaixe ou quebra dos trilhos</td><td>12</td></tr></table></div>
+    <div class="files"><a href="arquivos/fmea.xlsx">Planilha do FMEA</a></div>
+  </div></details>
+
+  <details><summary>Funções do produto: FAST e matriz morfológica</summary><div>
+    <p>Quebramos a cadeira em funções (regular altura, mover-se até os amigos, adicionar mesinha e suporte de garrafa, limpar com facilidade, crescer com a criança, facilitar a alimentação) e listamos soluções para cada uma.</p>
+    <div class="files"><a href="arquivos/modelagem-funcional.pdf">Modelagem funcional</a><a href="arquivos/fast.pdf">Diagrama FAST</a><a href="arquivos/matriz-morfologica.pdf">Matriz morfológica</a></div>
+  </div></details>
+</div></section>
+
+<section id="gate1"><div class="wrap">
+  <h2>Gate 1</h2>
+  <p class="lead">Benchmark do que já existe e pesquisa de patentes para inspirar a nossa solução.</p>
+
+  <h3>Benchmark</h3>
+  <p>Pesquisamos modelos de mercado e em impressão 3D. Nenhum atende tudo: uns têm estigma clínico, outros focam em andar, outros deixam a postura desabar.</p>
+  <div class="grid">
+    <div class="card t1"><h4>Cadeira de rodas 3D</h4><p>Personalização total, mas muito tempo de impressão.</p></div>
+    <div class="card t2"><h4>Andador ortopédico 3D</h4><p>Ótima estrutura modular, sem apoio de tronco.</p></div>
+    <div class="card t3"><h4>Andador triciclo</h4><p>Boa base e travas de roda, sem inclinação postural.</p></div>
+    <div class="card t4"><h4>Cadeira de rodas infantil</h4><p>Tamanho certo, porém visual muito clínico.</p></div>
+    <div class="card t5"><h4>Elevador de transferência</h4><p>Boas alavancas, pesado e médico demais.</p></div>
+    <div class="card t6"><h4>Andador para paralisia cerebral</h4><p>Muitos elementos de contenção, mas cansa na aula.</p></div>
+    <div class="card t1"><h4>Cadeira dobrável</h4><p>Fácil de transportar, assento em lona piora a postura.</p></div>
+    <div class="card t2"><h4>Parapodium infantil</h4><p>Ótima segurança postural, alto e ortopédico.</p></div>
+  </div>
+  <div class="files"><a href="arquivos/pesquisa-de-mercado-e-patentes.docx">Pesquisa completa (com prós e contras)</a></div>
+
+  <h3>Pesquisa de patentes</h3>
+  <details><summary>INPI (Brasil): 5 patentes</summary><div class="tbl"><table>
+    <tr><th>Número</th><th>Título</th></tr>
+    <tr><td>BR 10 2019 011834-4 B1</td><td>Cadeira multifuncional com dispositivo de movimentação eletrônico</td></tr>
+    <tr><td>BR MU 8702741-0 U2</td><td>Cadeira multifuncional conversível para banho e cuidado de pacientes acamados</td></tr>
+    <tr><td>BR PI 1001017-3 A2</td><td>Aperfeiçoamentos em cadeira de rodas anfíbia</td></tr>
+    <tr><td>BR 10 2017 016598-1 A2</td><td>Colete para marcha e atividade motora ativa assistida</td></tr>
+    <tr><td>BR 11 2024 006982-6 A2</td><td>Apoio de braço, amortecimento e cadeira de rodas dobrável</td></tr></table></div></details>
+  <details><summary>Google Patents (USPTO, WIPO, EPO): 10 patentes</summary><div class="tbl"><table>
+    <tr><th>Número</th><th>Título</th></tr>
+    <tr><td>US9757291B2</td><td>Unidade de elevação para cadeiras de rodas e cadeiras terapêuticas</td></tr>
+    <tr><td>KR101403555B1</td><td>Aparelho auxiliar para sentar e posicionar pessoas com deficiência</td></tr>
+    <tr><td>US20210228433A1</td><td>Andador</td></tr>
+    <tr><td>US20010015567A1</td><td>Sistema de posicionamento corporal e suporte dinâmico</td></tr>
+    <tr><td>US10390610B2</td><td>Estação de trabalho com assentos de lazer</td></tr>
+    <tr><td>EP2656750A1</td><td>Cadeira ajustável para várias posições corporais</td></tr>
+    <tr><td>US10272282B2</td><td>Sistemas e métodos para fornecer cadeiras ergonômicas</td></tr>
+    <tr><td>US10390620B2</td><td>Assento ergonômico com inclinação travável e alimentação remota</td></tr>
+    <tr><td>US11471345B2</td><td>Cadeira ergonômica ajustável</td></tr>
+    <tr><td>US9987961B2</td><td>Conjunto de assento ajustável</td></tr></table></div></details>
+</div></section>
+
+<section id="gate2"><div class="wrap">
+  <h2>Gate 2</h2>
+  <p class="lead">Conceitos e decisões do projeto conceitual.</p>
+  <div class="soon">Em construção. Conteúdo do Gate 2 entra aqui.</div>
+</div></section>
+
+<section id="pos"><div class="wrap">
+  <h2>Pós-Desenvolvimento</h2>
+  <p class="lead">Fabricação, testes com a usuária e entrega final.</p>
+  <div class="soon">Em construção. Esta etapa vem depois do protótipo.</div>
+</div></section>
+
+<footer>Equipe Flexa · Engenharia do Produto · UFLA, campus São Sebastião do Paraíso</footer>
+</body>
+</html>
